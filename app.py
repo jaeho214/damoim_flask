@@ -28,7 +28,7 @@ def crawler(maxpage, location, sort, s_date, e_date):
     s_from = s_date.replace(".", "")
     e_to = e_date.replace(".", "")
     page = 1
-    maxpage_t = (int(maxpage)-1)*10+1 # 11= 2페이지 21=3페이지 31=4페이지 ...81=9페이지 , 91=10페이지, 101=11페이지
+    maxpage_t = (int(maxpage)-1)*10+1
     urllib.parse.quote(location)
 
     separate = ''
@@ -81,14 +81,14 @@ def contents_cleansing(contents):
 
 def date_cleansing(test):
     try:
-        pattern = '\d+.(\d+).(\d+).'  # 정규표현식
+        pattern = '\d+.(\d+).(\d+).'
 
         r = re.compile(pattern)
-        match = r.search(test).group(0)  # 2018.11.05.
+        match = r.search(test).group(0)
         date_text.append(match)
 
     except AttributeError:
-        pattern = '\w* (\d\w*)'  # 정규표현식
+        pattern = '\w* (\d\w*)'
 
         r = re.compile(pattern)
         match = r.search(test).group(1)
